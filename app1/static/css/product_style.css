@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&family=Lobster&family=Pacifico&family=Splash&display=swap");
+
+body {
+  font-family: "Comfortaa", cursive;
+}
+
+h1 {
+  font-family: "Pacifico", cursive;
+  color: rgb(116, 65, 109);
+  cursor: crosshair;
+}
+.product_div {
+  display: flex !important;
+  flex-direction: row !important;
+  border: 0px solid black !important;
+  border-radius: 2px !important;
+  box-shadow: 1px 10px 25px rgb(36, 37, 52) !important;
+  margin: 50px 40px;
+}
+h3 {
+  font-size: 3vw !important;
+}
+.product_table > * {
+  border: 0px solid black !important;
+}
+/* .product_table{
+    
+} */
+.product_image {
+  width: 45vw !important;
+}
+
+.slider_head {
+  font-family: "Pacifico", cursive;
+  color: #089090;
+}
+.slider_image {
+  transition: all 1s;
+  width: 40vw !important;
+}
+.carousel_item:hover .slider_image_a:hover .slider_image{
+ cursor:cell;
+}
+
+.bg-dark:hover {
+  background-color: #165a6d!important;
+}
+
+/* $carousel-transition-duration: 1s; */
+
+
+
+
+/* single product view css */
+
+
+.card {
+  border: none;
+}
+.product {
+  background-color: rgb(244, 237, 241);
+}
+.brand {
+  font-size: 13px;
+}
+.act-price {
+  color: red;
+  font-weight: 700;
+}
+.dis-price {
+  text-decoration: line-through;
+}
+.about {
+  font-size: 14px;
+}
+.colour {
+  margin-bottom: 10px;
+}
+label.radio {
+  cursor: pointer;
+}
+label.radio input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+label.radio span {
+  padding: 2px 9px;
+  border: 2px solid #ff0000;
+  display: inline-block;
+  color: #ff0000;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+label.radio input:checked + span {
+  border-color: #ff0000;
+  background-color: #ff0000;
+  color: #fff;
+}
+.btn-danger {
+  background-color: #ff0000 !important;
+  border-color: #ff0000 !important;
+}
+.btn-danger:hover {
+  background-color: #da0606 !important;
+  border-color: #da0606 !important;
+}
+.btn-danger:focus {
+  box-shadow: none;
+}
+.cart i {
+  margin-right: 10px;
+}

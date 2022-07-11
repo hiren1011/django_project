@@ -1,0 +1,32 @@
+{% extends 'base1.html' %}
+    {% block title %} Log in {% endblock %}
+    {% block css %} {% load static %}<link rel="stylesheet" href='{% static "css/signup.css " %}'> <script src="{% static 'js/signup.js' %}"></script>{% endblock %}
+    {% block content %}
+    <h1 class="heading">Log in</h1>
+    <form method="post" name="form1">
+      {% csrf_token %}
+                <div class="outr_field p-1 ">
+                  <label  class="form-label legnd"><h4>Contact</h4></label>
+                    <div class="flex_div">
+                        
+                        <input type="text" id="user_mail" class="usr_input" oninput="check_mail()" name="user_email" placeholder="Email" value="">
+                        <p id="error-msg-mail" class="error-msg">Please Enter A Valid Email Id</p>
+                      </div>
+                      
+                      
+                      <label for="" class="form-label legnd"><h4>Password</h4></label>
+                      <div class="flex_div">
+                        <input type="password" name="user_password" id="user_pswd" class="usr_input" oninput="check_pswd()" placeholder="Password " value="">
+                        <label for="checkid"  style="word-wrap:break-word;font-size:medium">
+                          <input id="pswd_check" class="pswd_check" type="checkbox" onclick="show_Password()" style="color:white" />Show password
+                       </label>
+                        
+                      </div>
+                    </div>
+            <button type="submit" class="usr_input submit_btn" >Log in</button>
+            
+        </form>
+          
+        <h3 class="sign_up_link">Don't have a account?<a href="{% url 'signup' %}">Click here to signup</a></h3>
+
+{% endblock %}

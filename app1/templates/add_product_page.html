@@ -1,0 +1,47 @@
+{% extends 'base1.html' %}
+    {% block title %} Add product{% endblock %}
+    {% block css %} {% load static %}{% endblock %}
+    {% block content %}
+
+
+    <form method="post" enctype="multipart/form-data" class="container-fluid form" >
+        {% csrf_token %} 
+        <div class="mb-3 d-flex flex-row">
+            
+
+                <label for="exampleInputEmail1" class="form-label">Product Name </label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="pname"  />
+            
+        </div>
+        <div class="mb-3 d-flex flex-row">
+          <label for="exampleInputEmail1" class="form-label">Product Price </label>
+          <input type="number" class="form-control" id="exampleInputEmail1" name="pprice" >
+        </div>
+        
+        <div class="mb-3 d-flex flex-row">
+          <label for="exampleInputEmail1" class="form-label">Product Descritpion </label>
+          <input type="text" class="form-control" id="exampleInputEmail1" name="pdes" >
+        </div>
+
+        <div class="mb-3 d-flex flex-row">
+          <label for="exampleInputEmail1" class="form-label">Product Review </label>
+          <input type="text" class="form-control" id="exampleInputEmail1" name="preview" >
+        </div>
+
+        <div class="mb-3 d-flex flex-row">
+          <label for="exampleInputEmail1" class="form-label">Product Image </label>
+          
+        </div>
+
+        <div class="mb-3">
+          <input type="file" class="form-control"  name="pimage" >
+
+        </div>
+          
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+
+    {% endblock %}

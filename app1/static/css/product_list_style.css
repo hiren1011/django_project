@@ -1,0 +1,20 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Splash&family=The+Nautigal:wght@700&display=swap');
+
+.product_table{
+    background-color:#ccfcfc;
+    color: black;
+}
+
+.product_table{
+ width: 100vw !important;
+  
+}
+.products_list_images{
+    width: 7vw;
+}
+
+tbody > tr > *{
+    vertical-align: middle;
+  
+}

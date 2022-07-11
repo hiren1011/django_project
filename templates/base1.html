@@ -1,0 +1,156 @@
+{% load base1_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/navbar_style.css' %} ">
+
+    {% block css %} 
+    {% endblock %}
+
+  </head>
+<body onload="navactive()" style="background-color:#ccfcfc">
+    <nav class="navbar navbar-expand-lg  navbar-dark shadow-sm p-1 mb-5" style="background-color:#165a6d;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 40px;">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbarlist">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'home' %}" home >home</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}" contact>contact</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link " href="{% url 'signin' %}" signin >log in</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" moreinfo >
+                  more information
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'about' %}" about >about information</a></li>
+                  <li><a class="dropdown-item" href="{% url 'products_url' %}" products >products</a></li>
+                </ul>
+              </li>
+              
+            </ul>
+            <form class="d-flex" id="search_form" role="search" method="get" >
+              <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-info" type="submit">Search</button>
+            </form>
+            
+            
+            <!-- for profile view -->
+            <ul>
+              <li class="nav-item dropdown" style="list-style: none;">
+                <a class="nav-link dropdown-toggle " style="color:aqua;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" moreinfo >
+                  Logged as {% user_details request %}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item " href="#" about >Edit profile</a></li>
+                  <li><a class="dropdown-item " href="{% url 'logout' %}" products >Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          
+          
+          </div>
+        </div>
+      </nav>
+
+      {% if messages %}
+    <ul class="messages" style="background-color:rgb(167, 120, 44);">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" style="list-style:none;color:white" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+      {% block heading %}
+    {% endblock heading%}
+      
+
+      
+      <ul class="list-group">
+        {% if data.ask %}
+        <li style="color:white " >Search result for : {{data.ask}}</li>
+        {% else %}
+        <li hidden ></li>
+        {% endif %}
+        
+        {% for i in data.res %}
+         
+        <a href="{% url 'product_url' i.id %}" style="text-decoration:none ;">
+        <li class="list-group-item"> <img src="{{i.image.url}}" alt="{{i.name}}" style="width:1.5vw ;"> {{i.name}} / {{i.price}}&#8377; / {{i.des}}</li>
+        </a>
+        {% endfor %}
+        
+        
+    </ul>
+      
+    
+    {% block content %}
+    {% block pages %}
+    {% endblock pages %}
+      
+      {% endblock  %}
+
+    
+
+      <footer>
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);font-family:'Courier New', Courier, monospace">
+          © 2021 Copyright:
+          <a class="text-reset fw-bold" href="{% url 'home' %}">hingushoping.com</a>
+        </div>
+      </footer>
+
+
+
+      <script>
+        // console.log("The full URL of this page is:<br>" + window.location.href);
+        const url = window.location.href;
+        const lastele = url.split('/');
+        const last = lastele[lastele.length-2];
+        
+        function navactive(){  
+          
+          let nav = document.querySelectorAll("li a");
+          let n= 0;
+          console.log(last);
+
+          document.querySelector('['+last+']').classList.add('active');
+
+
+          if(last == 'contact' || last == 'signin' || last == 'signup'){
+
+            document.getElementById("search_form").style.display = 'none';
+            //console.log("if contact works")
+          }
+          else{
+            document.getElementById("search_form").style.display = 'block';
+          }
+  
+          
+
+
+      }
+
+   
+
+
+      </script>
+
+    </body>
+    </html>

@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Lobster&family=Pacifico&family=Splash&family=Yellowtail&display=swap');
+*{
+    box-sizing: border-box;
+}
+body > .questions{
+    
+    padding: 0 10px 10px 10px;
+}
+
+
+
+.questions{
+    
+    color: color-contrast( linear-gradient(#68367d,rgb(246, 168, 168),#99fc99) vs white, black); ;
+}
+.questions h1{
+    padding-bottom: 10px;
+}
+.questions h2,.questions h1{
+    font-family: 'Pacifico' , cursive;
+}
+
+.questions p{
+    font-family: 'Yellow' , cursive;
+    margin-left: 1vw;
+}

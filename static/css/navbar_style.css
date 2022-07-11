@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Lobster&family=Pacifico&family=Splash&family=Yellowtail&display=swap');
+
+
+nav{
+    font-family: "Yellowtail", cursive;
+}
+
+.nav-link.profile{
+font-family: 'Yellowtail', cursive !important;
+}
+
+.nav-link,.dropdown-item{
+    font-size: 20px;
+}
+
+.d-flex{
+    font-family: 'Comfortaa' , cursive;
+}
+.active::first-letter{
+    text-transform: capitalize;
+}

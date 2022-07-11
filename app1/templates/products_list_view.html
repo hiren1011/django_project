@@ -1,0 +1,66 @@
+{% extends 'base1.html' %}
+    {% block title %} Products {% endblock %}
+    {% block css %} {% load static %}<link rel="stylesheet" href='{% static "css/product_list_style.css" %}'> {% endblock %}
+    {% block content %}
+    
+    {% for i in q %}
+        {% if forloop.counter < 2 %}
+            {% if is_a_vendor %}
+                <a href="{% url 'add_product' %}" class="btn btn-outline-primary " style="margin-left:88%;">+ add product</a>
+            
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    <div class="album py-5 " style="color:white; max-width:90vw;margin: 0 auto">
+        
+        
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 rounded" style="background-color: #2698b8;box-shadow: 0px 10px 15px black">
+        {% for i in q %}
+
+        <div class="col" style="background-color:#1a687e;color:white" >
+            <a href="{% url 'product_url' i.id %}">
+                <img src="{{i.image.url}}" class="card-img-top" alt="{{i.name}}"></a>
+            <div class="card-body">
+                <h5 class="card-title">{{i.name}}</h5>
+                <p class="card-text">{{i.price}}&#8377; <br>{{i.des}}</p>
+                <a href="{% url 'product_url' i.id %}" class="btn btn-primary">View</a>
+                {% if is_a_vendor %}
+                <a href="{% url 'edit_product' i.id %}" class="btn btn-outline-info">Edit</a>
+                <a href="{% url 'delete_product' i.id %}" class="btn btn-danger">delete</a>
+                {% endif %}
+            </div>
+        </div>
+        
+        {% endfor %}
+    </div>
+
+    </div>
+    {% block pages %}
+    <div class="row d-flex  ">
+    <nav aria-label="Page navigation example ">
+
+            <ul class="pagination justify-content-center" style="font-family:sans-serif ;">
+                
+                {% if q.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{q.previous_page_number}}">Previous</a></li>
+                
+                <li class="page-item"><a class="page-link" href="?page={{q.previous_page_number}}">{{q.previous_page_number}}</a></li>
+                {% endif %}
+                
+                
+                <li class="page-item"><a class="page-link bg-dark" href="?page={{q.number}}">{{q.number}}</a></li>
+                
+                {% if q.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{q.next_page_number}}">{{q.next_page_number}}</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{q.next_page_number}}">Next</a></li>
+                {% endif %}
+            </ul>
+
+        </nav>
+    </div>
+        
+        {% endblock pages %}
+        
+        
+        {% endblock %}

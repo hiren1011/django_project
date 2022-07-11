@@ -1,0 +1,53 @@
+{% extends 'base1.html' %}
+    {% block title %} Sign up {% endblock %}
+    {% block css %} 
+    {% load static %}
+    <link rel="stylesheet" href='{% static "css/signup.css " %}'> 
+    <script src="{% static 'js/signup.js' %}"></script>                
+    {% endblock %}
+    {% block content %}
+    <h1 class="heading">Signup</h1>
+    <form action="{% url 'signup' %}" method="post" name="form1">
+        {% csrf_token %}
+        <fieldset class="outr_field a">
+            <label class="legnd">Name</label>
+                <div class="flex_div" >
+                    <input type="text" id="user_name" class="usr_input" name="user_name"placeholder="Name">
+                    </div>
+                    
+                </fieldset>
+                <fieldset class="outr_field b">
+                    <label class="legnd">Contact</label>
+                    <div class="flex_div">
+                        <input type="text" id="user_phn_no" class="usr_input" name="user_phone" oninput="check_phone()" placeholder="Phone number" value="">
+                        <p id="error-msg-phone" class="error-msg">Please Enter A Valid Phone number</p>
+                        <input type="text" id="user_mail" class="usr_input" name="user_mail" oninput="check_mail()" placeholder="Email" value="">
+                        <p id="error-msg-mail" class="error-msg">Please Enter A Valid Email Id</p>
+                </div>
+                
+            </fieldset>
+                <fieldset class="outr_field c">
+                    <label class="legnd">Password</label>
+                    <div class="flex_div">
+                        <input type="password" id="user_pswd" class="usr_input" name="user_password" oninput="check_pswd()" placeholder="Password " value="">
+                        <input type="password" id="user_repswd" class="usr_input" oninput="check_pswd()" placeholder="Re-enter Password" value="">
+                        <label for="checkid"  style="word-wrap:break-word;font-size:medium">
+                            <input id="pswd_check" class="pswd_check" type="checkbox" onclick="show_Password()"/>Show password
+                         </label>
+                        <p id="error-msg-pswd" class="error-msg">password do not match</p>
+                        <p id="validate-msg-pswd" class="error-msg"></p>
+                        
+                        
+                </div>
+                
+            </fieldset>
+            <button type="submit" class="usr_input submit_btn">Sign up</button>
+            
+        </form>
+
+        
+        <!-- <img src="{% static 'images/check_mark.png' %}" width="30px" style="margin= 0 auto;"class="" alt=""> -->
+
+        <h5 class="signin_link">Already have an account <a href="{% url 'signin' %}"> Click here to sign in</a></h5>
+  
+{% endblock %}
