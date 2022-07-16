@@ -64,3 +64,24 @@
         
         
         {% endblock %}
+{% block script %}
+
+
+        function confirm_delete(num){
+            
+            let path = location.href;
+            if(confirm('are you sure you want to delete ? ')){
+                location.href = path + 'delete-product/'+ Number(num);
+                console.log(location.href)
+                return true
+            }
+            else{
+                location.href = path;
+                return false
+            }
+        }
+
+
+
+
+    {% endblock script %}
