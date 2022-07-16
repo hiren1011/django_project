@@ -1,5 +1,4 @@
 from django.shortcuts import redirect, render,HttpResponse
-from requests import delete, request
 from app1.models import Signup,Product
 from django.contrib.auth.hashers import make_password 
 from django.db.models import Q
@@ -203,13 +202,9 @@ def add_product_view(request):
 
 def delete_product_view(request,no):
     pro = Product.objects.get(id=no)
-    if request.method == "GET": 
-        if 'delete' in request.GET.get('delete'):
-
-            confermation_del = request.GET.get('delete')
-
-            if confermation_del:
-                pro.delete()
-                return redirect('products_url')
-    return render(request,'delete_product_page.html',{'pro':pro})      
+    
+    item = pro.delete()
+    messages.info(request,'Product deleted succesfully!!')
+    return redirect('products_url')      
+         
     
